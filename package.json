@@ -1,0 +1,31 @@
+{
+  "name": "erasys-trial",
+  "version": "1.0.0",
+  "description": "Small app made for Erasys GmbH as a pre-hiring trial.",
+  "scripts": {
+    "start": "webpack serve",
+    "build": "webpack"
+  },
+  "author": {
+    "name": "Étienne Robert",
+    "email": "etiennerobert33@gmail.com",
+    "url": "http://github.com/etrobert"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^16.9.55",
+    "@types/react-dom": "^16.9.9",
+    "css-loader": "^5.0.0",
+    "style-loader": "^2.0.0",
+    "ts-loader": "^8.0.7",
+    "typescript": "^4.0.5",
+    "webpack": "^5.3.2",
+    "webpack-cli": "^4.1.0",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-hot-loader": "^4.13.0"
+  }
+}
