@@ -1,26 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { hot } from 'react-hot-loader';
+import { SearchResult, SearchUser } from './api';
 import './App.css';
-
-interface SearchUser {
-  id: number;
-  name: string;
-  online_status: 'OFFLINE' | 'ONLINE' | 'DATE';
-  is_plus: boolean;
-  picture: {
-    comment: string;
-    url: string;
-  };
-  last_login: string;
-}
-
-interface SearchResult {
-  cursors: {
-    after: string;
-  };
-  items: SearchUser[];
-  total: number;
-}
+import UserCard from './UserCard';
 
 function App() {
   const [users, setUsers] = useState<SearchUser[] | null>(null);
@@ -36,7 +18,12 @@ function App() {
   }, []);
   return (
     <div className="App">
-      {users ? `There are ${users.length} loaded users` : 'Loading'}
+      {users
+        ? users.map((user) => {
+            console.log(user);
+            return <UserCard key={user.id} user={user} censored={true} />;
+          })
+        : 'Loading'}
     </div>
   );
 }

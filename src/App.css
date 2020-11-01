@@ -17,4 +17,8 @@ body,
   align-items: center;
 
   background: radial-gradient(circle, rgb(1, 87, 147) 0%, rgb(0, 22, 48) 100%);
+
+  flex-wrap: wrap;
+  overflow: auto;
+  gap: 1rem;
 }
