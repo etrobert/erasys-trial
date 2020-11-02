@@ -16,12 +16,18 @@ function App() {
       .then((data: SearchResult) => setUsers(data.items))
       .catch((error) => console.error(error));
   }, []);
+
+  const [censored, setCensored] = useState(true);
+
   return (
     <div className="App">
+      <button onClick={() => setCensored(!censored)}>
+        {censored ? 'Uncensored Mode' : 'Censored Mode'}
+      </button>
       {users
         ? users.map((user) => {
             console.log(user);
-            return <UserCard key={user.id} user={user} censored={true} />;
+            return <UserCard key={user.id} user={user} censored={censored} />;
           })
         : 'Loading'}
     </div>
