@@ -16,5 +16,5 @@ body,
   justify-content: center;
   align-items: center;
 
-  background: lightpink;
+  background: radial-gradient(circle, rgb(1, 87, 147) 0%, rgb(0, 22, 48) 100%);
 }
