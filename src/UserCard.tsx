@@ -15,6 +15,7 @@ function UserCard(props: { user: User; censored: boolean }) {
       ) : (
         'no picture'
       )}
+      <span className="name">{props.user.name}</span>
       <div
         className="status"
         style={{ background: statusColor[props.user.online_status] }}
