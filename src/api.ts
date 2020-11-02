@@ -20,4 +20,29 @@ interface SearchResult {
   total: number;
 }
 
-export { SearchResult, SearchUser, OnlineStatus };
+interface Profile {
+  headline: string;
+  id: number;
+  location: {
+    area: string;
+    city: string;
+    country: string;
+    distance: number;
+    name: string;
+  };
+  personal: {
+    age: number;
+    body_hair: string;
+    body_type: string;
+    ethnicity: string;
+    eye_color: string;
+    height: {
+      cm: number;
+    };
+    relationship: string;
+    smoker: string;
+  };
+}
+type User = SearchUser & Profile;
+
+export { SearchResult, SearchUser, OnlineStatus, Profile, User };

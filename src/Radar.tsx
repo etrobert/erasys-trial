@@ -1,6 +1,6 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import { OnlineStatus, SearchUser } from './api';
+import { OnlineStatus, User } from './api';
 import UserCard from './UserCard';
 import './Radar.css';
 
@@ -12,7 +12,7 @@ declare module 'csstype' {
 }
 
 function RadarCircle(props: {
-  users: SearchUser[];
+  users: User[];
   distanceMax: number;
   censored: boolean;
 }) {
@@ -37,7 +37,7 @@ enum statusColor {
 }
 
 function Radar(props: {
-  users: SearchUser[];
+  users: User[];
   censored: boolean;
   online_status: OnlineStatus;
 }) {

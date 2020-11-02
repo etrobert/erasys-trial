@@ -1,9 +1,9 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import { SearchUser } from './api';
+import { User } from './api';
 import './UserCard.css';
 
-function UserCard(props: { user: SearchUser; censored: boolean }) {
+function UserCard(props: { user: User; censored: boolean }) {
   return (
     <div className="UserCard">
       {props.user.picture ? (
@@ -14,6 +14,7 @@ function UserCard(props: { user: SearchUser; censored: boolean }) {
       ) : (
         'no picture'
       )}
+      {props.user.location.distance}
     </div>
   );
 }

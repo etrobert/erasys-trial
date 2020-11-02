@@ -1,20 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import { hot } from 'react-hot-loader';
-import { SearchResult, SearchUser } from './api';
+import { Profile, SearchResult, SearchUser, User } from './api';
 import './App.css';
 import Radar from './Radar';
 
 function App() {
-  const [users, setUsers] = useState<SearchUser[] | null>(null);
+  const [users, setUsers] = useState<User[] | null>(null);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/search')
-      .then((response) => {
-        if (!response.ok) throw new Error('There was an error during search');
-        return response.json();
-      })
-      .then((data: SearchResult) => setUsers(data.items))
-      .catch((error) => console.error(error));
+    const loadUsers = async () => {
+      const searchResponse = await fetch('http://localhost:3000/api/search');
+      if (!searchResponse.ok) throw new Error('Error using the search api');
+      const {
+        items: searchUsers,
+      } = (await searchResponse.json()) as SearchResult;
+
+      const url =
+        'http://localhost:3000/api/profiles?' +
+        searchUsers.map((user) => 'ids=' + user.id).join('&');
+
+      const profileResponse = await fetch(url);
+      if (!profileResponse.ok) throw new Error('Error using the profile api');
+      const profiles = (await profileResponse.json()) as Profile[];
+
+      const mergedUsers = searchUsers.map((user) => {
+        const findProfile = (id: number) => profiles.find((p) => p.id == id);
+        return {
+          ...user,
+          ...findProfile(user.id)!, // Output is considered OK
+        };
+      });
+      setUsers(mergedUsers);
+    };
+
+    loadUsers().catch((err) => console.error(err));
   }, []);
 
   const [censored, setCensored] = useState(true);
