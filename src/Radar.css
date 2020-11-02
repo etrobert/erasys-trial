@@ -38,6 +38,10 @@
   animation-delay: calc(-7 * var(--radar-speed) / var(--radar-elem-count));
 }
 
+.RadarCircle :nth-child(9) {
+  animation-delay: calc(-8 * var(--radar-speed) / var(--radar-elem-count));
+}
+
 @keyframes RadarCircle-spin {
   from {
     transform: rotate(0) translate(var(--radar-radius)) rotate(0);
@@ -70,6 +74,11 @@
 
 .Radar .RadarCircle:nth-child(2) > * {
   animation-direction: reverse;
+}
+
+.Radar .RadarCircle:nth-child(3) {
+  --radar-radius: 40rem;
+  --radar-speed: 250s; /* s/turn */
 }
 
 .Radar {

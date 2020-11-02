@@ -62,6 +62,21 @@ function Radar(props: {
         distanceMax={12}
         censored={props.censored}
       />
+      <RadarCircle
+        users={[
+          props.users[11],
+          props.users[12],
+          props.users[13],
+          props.users[14],
+          props.users[15],
+          props.users[16],
+          props.users[17],
+          props.users[18],
+          props.users[19],
+        ]}
+        distanceMax={20}
+        censored={props.censored}
+      />
       <div
         className="Radar-status"
         style={{ background: statusColor[props.online_status] }}
