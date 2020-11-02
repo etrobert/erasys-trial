@@ -14,3 +14,15 @@
   width: 100%;
   height: 100%;
 }
+
+.UserCard .status {
+  --diameter: 0.7rem;
+
+  position: absolute;
+  top: var(--diameter);
+  left: var(--diameter);
+
+  width: var(--diameter);
+  height: var(--diameter);
+  border-radius: calc(var(--diameter) / 2);
+}

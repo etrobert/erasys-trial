@@ -1,6 +1,7 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import { User } from './api';
+import { statusColor } from './misc';
 import './UserCard.css';
 
 function UserCard(props: { user: User; censored: boolean }) {
@@ -14,7 +15,10 @@ function UserCard(props: { user: User; censored: boolean }) {
       ) : (
         'no picture'
       )}
-      {props.user.location.distance}
+      <div
+        className="status"
+        style={{ background: statusColor[props.user.online_status] }}
+      ></div>
     </div>
   );
 }

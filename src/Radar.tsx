@@ -1,6 +1,7 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import { OnlineStatus, User } from './api';
+import { statusColor } from './misc';
 import UserCard from './UserCard';
 import './Radar.css';
 
@@ -28,12 +29,6 @@ function RadarCircle(props: {
       ))}
     </div>
   );
-}
-
-enum statusColor {
-  ONLINE = '#6df500',
-  OFFLINE = 'grey',
-  DATE = '#f91e79',
 }
 
 function Radar(props: {
