@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { hot } from 'react-hot-loader';
 import { SearchResult, SearchUser } from './api';
 import './App.css';
-import UserCard from './UserCard';
+import Radar from './Radar';
 
 function App() {
   const [users, setUsers] = useState<SearchUser[] | null>(null);
@@ -21,15 +21,10 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={() => setCensored(!censored)}>
+      <button id="censoredButton" onClick={() => setCensored(!censored)}>
         {censored ? 'Uncensored Mode' : 'Censored Mode'}
       </button>
-      {users
-        ? users.map((user) => {
-            console.log(user);
-            return <UserCard key={user.id} user={user} censored={censored} />;
-          })
-        : 'Loading'}
+      {users ? <Radar users={users} censored={censored} /> : 'Loading'}
     </div>
   );
 }
