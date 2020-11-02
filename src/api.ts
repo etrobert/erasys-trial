@@ -1,7 +1,9 @@
+type OnlineStatus = 'OFFLINE' | 'ONLINE' | 'DATE';
+
 interface SearchUser {
   id: number;
   name: string;
-  online_status: 'OFFLINE' | 'ONLINE' | 'DATE';
+  online_status: OnlineStatus;
   is_plus: boolean;
   picture?: {
     comment: string;
@@ -18,4 +20,4 @@ interface SearchResult {
   total: number;
 }
 
-export { SearchResult, SearchUser };
+export { SearchResult, SearchUser, OnlineStatus };

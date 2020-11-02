@@ -1,6 +1,6 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import { SearchUser } from './api';
+import { OnlineStatus, SearchUser } from './api';
 import UserCard from './UserCard';
 import './Radar.css';
 
@@ -30,7 +30,17 @@ function RadarCircle(props: {
   );
 }
 
-function Radar(props: { users: SearchUser[]; censored: boolean }) {
+enum statusColor {
+  ONLINE = '#6df500',
+  OFFLINE = 'grey',
+  DATE = '#f91e79',
+}
+
+function Radar(props: {
+  users: SearchUser[];
+  censored: boolean;
+  online_status: OnlineStatus;
+}) {
   return (
     <div className="Radar">
       <RadarCircle
@@ -52,6 +62,10 @@ function Radar(props: { users: SearchUser[]; censored: boolean }) {
         distanceMax={12}
         censored={props.censored}
       />
+      <div
+        className="Radar-status"
+        style={{ background: statusColor[props.online_status] }}
+      ></div>
     </div>
   );
 }

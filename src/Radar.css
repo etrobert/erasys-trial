@@ -70,3 +70,16 @@
 .Radar .RadarCircle:nth-child(2) > * {
   animation-direction: reverse;
 }
+
+.Radar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Radar-status {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 1rem;
+}

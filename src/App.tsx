@@ -24,7 +24,11 @@ function App() {
       <button id="censoredButton" onClick={() => setCensored(!censored)}>
         {censored ? 'Uncensored Mode' : 'Censored Mode'}
       </button>
-      {users ? <Radar users={users} censored={censored} /> : 'Loading'}
+      {users ? (
+        <Radar users={users} censored={censored} online_status={'ONLINE'} />
+      ) : (
+        'Loading'
+      )}
     </div>
   );
 }
