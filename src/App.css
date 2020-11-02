@@ -21,6 +21,9 @@ body,
   flex-wrap: wrap;
   overflow: auto;
   gap: 1rem;
+
+  --user-card-width: 10rem;
+  --user-card-diag: 14.14213562373rem; /* = sqrt(2 * --user-card-width^2) */
 }
 
 #censoredButton {

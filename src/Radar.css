@@ -63,12 +63,15 @@
 }
 
 .Radar .RadarCircle:nth-child(1) {
-  --radar-radius: 9rem;
+  --radar-radius: var(--radar-center-space);
   --radar-speed: 80s; /* s/turn */
 }
 
 .Radar .RadarCircle:nth-child(2) {
-  --radar-radius: 25rem;
+  --radar-radius: calc(
+    var(--radar-center-space) +
+      (var(--radar-space-between-cards) + var(--user-card-diag)) * 1
+  );
   --radar-speed: 180s; /* s/turn */
 }
 
@@ -77,7 +80,10 @@
 }
 
 .Radar .RadarCircle:nth-child(3) {
-  --radar-radius: 40rem;
+  --radar-radius: calc(
+    var(--radar-center-space) +
+      (var(--radar-space-between-cards) + var(--user-card-diag)) * 2
+  );
   --radar-speed: 250s; /* s/turn */
 }
 
@@ -90,6 +96,11 @@
   justify-content: center;
 
   overflow: hidden;
+
+  --radar-space-between-cards: 2rem;
+  --radar-center-space: calc(
+    var(--radar-space-between-cards) + var(--user-card-diag) / 2
+  );
 }
 
 .Radar-status {
