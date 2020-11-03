@@ -13,3 +13,9 @@
 .Grid li {
   list-style-type: none;
 }
+
+.Grid .footer {
+  width: var(--user-card-width);
+  height: var(--user-card-width);
+  background-color: indianred;
+}
