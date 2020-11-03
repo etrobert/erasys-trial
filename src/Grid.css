@@ -1,0 +1,15 @@
+.Grid {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, var(--user-card-width));
+  grid-gap: 1rem;
+  justify-items: center;
+  justify-content: center;
+
+  padding: 0;
+}
+
+.Grid li {
+  list-style-type: none;
+}

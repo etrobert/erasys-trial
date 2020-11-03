@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { hot } from 'react-hot-loader';
 import { Profile, SearchResult, SearchUser, User } from './api';
 import './App.css';
-import Radar from './Radar';
+import Grid from './Grid';
 
 function App() {
   const [users, setUsers] = useState<User[] | null>(null);
@@ -43,11 +43,7 @@ function App() {
       <button id="censoredButton" onClick={() => setCensored(!censored)}>
         {censored ? 'Uncensored Mode' : 'Censored Mode'}
       </button>
-      {users ? (
-        <Radar users={users} censored={censored} online_status={'ONLINE'} />
-      ) : (
-        'Loading'
-      )}
+      {users ? <Grid users={users} censored={censored} /> : 'Loading'}
     </div>
   );
 }
