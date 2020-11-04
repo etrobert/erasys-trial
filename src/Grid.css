@@ -1,9 +1,16 @@
 .Grid {
-  width: 100%;
+  --grid-gap: 1rem;
+  --grid-max-columns: 5;
+
+  --grid-max-width: calc(
+    (var(--user-card-width) * var(--grid-max-columns)) +
+      (var(--grid-gap) * (var(--grid-max-columns) - 1))
+  );
+  width: min(100%, var(--grid-max-width));
 
   display: grid;
   grid-template-columns: repeat(auto-fit, var(--user-card-width));
-  grid-gap: 1rem;
+  grid-gap: var(--grid-gap);
   justify-items: center;
   justify-content: center;
 
