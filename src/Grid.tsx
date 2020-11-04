@@ -4,7 +4,11 @@ import { User } from './api';
 import UserCard from './UserCard';
 import './Grid.css';
 
-function Grid(props: {
+function Grid({
+  users,
+  censored,
+  onScrollEnd,
+}: {
   users: User[];
   censored: boolean;
   onScrollEnd: () => void;
@@ -15,17 +19,17 @@ function Grid(props: {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const footer = footerRef.current!;
     const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) props.onScrollEnd();
+      if (entries[0].isIntersecting) onScrollEnd();
     });
     observer.observe(footer);
     return () => observer.unobserve(footer);
-  });
+  }, [onScrollEnd]);
 
   return (
     <ol className="Grid">
-      {props.users.map((user) => (
+      {users.map((user) => (
         <li key={user.id}>
-          <UserCard user={user} censored={props.censored} />
+          <UserCard user={user} censored={censored} />
         </li>
       ))}
       <li ref={footerRef} className="footer"></li>
