@@ -1,0 +1,24 @@
+.ProfilePhoto {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+
+  background-color: var(--color-dark);
+}
+
+.ProfilePhoto svg {
+  width: 70%;
+  height: 70%;
+}
+
+.ProfilePhoto img {
+  position: absolute;
+  object-fit: cover;
+
+  width: 100%;
+  height: 100%;
+}

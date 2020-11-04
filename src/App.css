@@ -27,12 +27,13 @@ body,
 
   --user-card-width: 10rem;
   --user-card-diag: 14.14213562373rem; /* = sqrt(2 * --user-card-width^2) */
+  --color-dark: #181818;
 }
 
 .App .error {
   position: absolute;
   z-index: 1;
-  background-color: #181818;
+  background-color: var(--color-dark);
   padding: 1em 2em;
   border-radius: 2em;
   font-size: 1.5rem;

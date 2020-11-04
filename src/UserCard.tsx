@@ -1,6 +1,7 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import { User } from './api';
+import ProfilePhoto from './ProfilePhoto';
 import { statusColor } from './misc';
 import './UserCard.css';
 
@@ -8,9 +9,10 @@ function UserCard(props: { user: User; censored: boolean }) {
   return (
     <div className="UserCard">
       {props.user.picture ? (
-        <img
-          src={props.censored ? './cat-yawning.jpg' : props.user.picture.url}
+        <ProfilePhoto
+          src={props.user.picture.url}
           alt={props.user.picture.comment}
+          censored={props.censored}
         />
       ) : (
         'no picture'
