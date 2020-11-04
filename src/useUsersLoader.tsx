@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Profile, SearchResult, User } from './api';
 
-type Status = 'IDLE' | 'NEW_CONTENT_REQUESTED' | 'LOADING' | 'NO_MORE';
+type Status =
+  | 'IDLE'
+  | 'NEW_CONTENT_REQUESTED'
+  | 'LOADING'
+  | 'NO_MORE'
+  | 'ERROR';
 
 /**
  * React Hook that handles user fetching
@@ -59,7 +64,7 @@ function useUsersLoader(): {
       }
     };
 
-    loadUsers().catch((err) => console.error(err));
+    loadUsers().catch(() => setStatus('ERROR'));
   }, [users, cursor, status]);
 
   return {

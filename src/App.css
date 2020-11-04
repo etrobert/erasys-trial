@@ -23,9 +23,19 @@ body,
   gap: 1rem;
 
   font-family: 'Helvetica Neue', Helvetica, Arial, 'Open Sans', sans-serif;
+  color: #fafafa;
 
   --user-card-width: 10rem;
   --user-card-diag: 14.14213562373rem; /* = sqrt(2 * --user-card-width^2) */
+}
+
+.App .error {
+  position: absolute;
+  z-index: 1;
+  background-color: #181818;
+  padding: 1em 2em;
+  border-radius: 2em;
+  font-size: 1.5rem;
 }
 
 #censoredButton {

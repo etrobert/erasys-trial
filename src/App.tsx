@@ -14,6 +14,11 @@ function App() {
       <button id="censoredButton" onClick={() => setCensored(!censored)}>
         {censored ? 'Uncensored Mode' : 'Censored Mode'}
       </button>
+      {loaderStatus == 'ERROR' && (
+        <div className="error">
+          There has been an error. Try reloading the page.
+        </div>
+      )}
       {users ? (
         <Grid
           users={users}
