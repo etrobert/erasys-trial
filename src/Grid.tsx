@@ -12,6 +12,7 @@ function Grid(props: {
   const footerRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const footer = footerRef.current!;
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) props.onScrollEnd();
