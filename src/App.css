@@ -43,3 +43,9 @@ body,
   bottom: 1em;
   left: 1em;
 }
+
+#changeViewButton {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+}
