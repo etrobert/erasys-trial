@@ -7,7 +7,7 @@ import useUsersLoader from './useUsersLoader';
 function App() {
   const [censored, setCensored] = useState(true);
 
-  const { users, loadMoreUsers } = useUsersLoader();
+  const { users, loadMoreUsers, status: loaderStatus } = useUsersLoader();
 
   return (
     <div className="App">
@@ -15,7 +15,12 @@ function App() {
         {censored ? 'Uncensored Mode' : 'Censored Mode'}
       </button>
       {users ? (
-        <Grid users={users} censored={censored} onScrollEnd={loadMoreUsers} />
+        <Grid
+          users={users}
+          censored={censored}
+          onScrollEnd={loadMoreUsers}
+          loaderStatus={loaderStatus}
+        />
       ) : (
         'Loading'
       )}

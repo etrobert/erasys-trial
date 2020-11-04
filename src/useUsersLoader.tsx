@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Profile, SearchResult, User } from './api';
 
+type Status = 'IDLE' | 'NEW_CONTENT_REQUESTED' | 'LOADING';
+
 /**
  * React Hook that handles user fetching
  *
@@ -8,17 +10,20 @@ import { Profile, SearchResult, User } from './api';
  * Calling *loadUsers* will fetch users.
  * Subsequent calls will fetch new ones and extend the users array.
  */
-function useUsersLoader(): { users: User[] | null; loadMoreUsers: () => void } {
+function useUsersLoader(): {
+  users: User[] | null;
+  loadMoreUsers: () => void;
+  status: Status;
+} {
   const [cursor, setCursor] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [newContentRequested, setNewContentRequested] = useState(true);
+  const [status, setStatus] = useState<Status>('NEW_CONTENT_REQUESTED');
 
   const [users, setUsers] = useState<User[] | null>(null);
 
   useEffect(() => {
     const loadUsers = async () => {
-      if (loading || !newContentRequested) return;
-      setLoading(true);
+      if (status != 'NEW_CONTENT_REQUESTED') return;
+      setStatus('LOADING');
 
       const searchUrl =
         'http://localhost:3000/api/search' +
@@ -48,19 +53,22 @@ function useUsersLoader(): { users: User[] | null; loadMoreUsers: () => void } {
 
       setCursor(cursors.after);
       setUsers(users ? [...users, ...mergedUsers] : mergedUsers);
-      setNewContentRequested(false);
-      setLoading(false);
+      setStatus('IDLE');
     };
 
     loadUsers().catch((err) => console.error(err));
-  }, [users, cursor, loading, newContentRequested]);
+  }, [users, cursor, status]);
 
   return {
     users,
     loadMoreUsers: () => {
-      setNewContentRequested(true);
+      setStatus((status) =>
+        status === 'IDLE' ? 'NEW_CONTENT_REQUESTED' : status
+      );
     },
+    status,
   };
 }
 
+export { Status };
 export default useUsersLoader;

@@ -3,19 +3,23 @@ import { hot } from 'react-hot-loader';
 import { User } from './api';
 import UserCard from './UserCard';
 import './Grid.css';
+import { Status as LoaderStatus } from './useUsersLoader';
 
 function Grid({
   users,
   censored,
   onScrollEnd,
+  loaderStatus,
 }: {
   users: User[];
   censored: boolean;
   onScrollEnd: () => void;
+  loaderStatus: LoaderStatus;
 }) {
   const footerRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
+    if (loaderStatus != 'IDLE') return;
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const footer = footerRef.current!;
     const observer = new IntersectionObserver((entries) => {
@@ -23,7 +27,7 @@ function Grid({
     });
     observer.observe(footer);
     return () => observer.unobserve(footer);
-  }, [onScrollEnd]);
+  }, [onScrollEnd, loaderStatus]);
 
   return (
     <ol className="Grid">
