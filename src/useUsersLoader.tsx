@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Profile, SearchResult, User } from './api';
 
-type Status = 'IDLE' | 'NEW_CONTENT_REQUESTED' | 'LOADING';
+type Status = 'IDLE' | 'NEW_CONTENT_REQUESTED' | 'LOADING' | 'NO_MORE';
 
 /**
  * React Hook that handles user fetching
@@ -51,9 +51,12 @@ function useUsersLoader(): {
         };
       });
 
-      setCursor(cursors.after);
       setUsers(users ? [...users, ...mergedUsers] : mergedUsers);
-      setStatus('IDLE');
+      if (!cursors) setStatus('NO_MORE');
+      else {
+        setCursor(cursors.after);
+        setStatus('IDLE');
+      }
     };
 
     loadUsers().catch((err) => console.error(err));

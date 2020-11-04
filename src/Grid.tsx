@@ -36,7 +36,9 @@ function Grid({
           <UserCard user={user} censored={censored} />
         </li>
       ))}
-      <li ref={footerRef} className="footer"></li>
+      {loaderStatus != 'NO_MORE' && (
+        <li ref={footerRef} className="footer"></li>
+      )}
     </ol>
   );
 }
