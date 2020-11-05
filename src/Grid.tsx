@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { hot } from 'react-hot-loader';
 import { User } from './api';
 import UserCard from './UserCard';
@@ -20,6 +20,8 @@ function Grid({
 }) {
   const footerRef = useRef<HTMLLIElement>(null);
 
+  const [focus, setFocus] = useState<number | null>(null);
+
   useEffect(() => {
     if (loaderStatus != 'IDLE') return;
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -35,7 +37,12 @@ function Grid({
     <ol className="Grid">
       {users.map((user) => (
         <li key={user.id}>
-          <UserCard user={user} censored={censored} />
+          <UserCard
+            user={user}
+            censored={censored}
+            onClick={() => setFocus(user.id)}
+            focused={user.id == focus}
+          />
         </li>
       ))}
       {loaderStatus != 'NO_MORE' && (

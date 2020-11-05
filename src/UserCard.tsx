@@ -5,9 +5,17 @@ import ProfilePhoto from './ProfilePhoto';
 import { statusColor } from './misc';
 import './UserCard.css';
 
-function UserCard(props: { user: User; censored: boolean }) {
+function UserCard(props: {
+  user: User;
+  censored: boolean;
+  onClick?: () => void;
+  focused?: boolean;
+}) {
   return (
-    <div className="UserCard">
+    <div
+      className={'UserCard' + (props.focused ? ' focused' : '')}
+      onClick={props.onClick}
+    >
       <ProfilePhoto picture={props.user.picture} censored={props.censored} />
       <div className="slider">
         <div className="header">

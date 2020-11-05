@@ -31,7 +31,8 @@
   transition: opacity var(--transition-duration);
 }
 
-.UserCard:hover .ProfilePhoto {
+.UserCard:hover .ProfilePhoto,
+.UserCard.focused .ProfilePhoto {
   opacity: 0.5;
 }
 
@@ -56,6 +57,7 @@
   --small-font-size: 0.9em;
 }
 
+.UserCard.focused .slider,
 .UserCard:hover .slider {
   transform: translateY(calc(-1 * var(--slide-amount)));
 }
