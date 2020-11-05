@@ -6,6 +6,7 @@ import './Toolbar.css';
 enum ViewButtonText {
   'GRID' = 'Grid',
   'RADAR' = 'Radar',
+  'DETAILS' = 'Details',
 }
 
 function Toolbar({
@@ -40,6 +41,7 @@ function Toolbar({
       <section className="viewSection">
         {renderViewButton('GRID')}
         {renderViewButton('RADAR')}
+        {renderViewButton('DETAILS')}
       </section>
     </div>
   );

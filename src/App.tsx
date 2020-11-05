@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { hot } from 'react-hot-loader';
 import './App.css';
+import Details from './Details';
 import Grid from './Grid';
 import { View } from './misc';
 import Radar from './Radar';
@@ -15,16 +16,23 @@ function App() {
 
   const renderView = () => {
     if (!users) return 'Loading...';
-    return view == 'GRID' ? (
-      <Grid
-        users={users}
-        censored={censored}
-        onScrollEnd={loadMoreUsers}
-        loaderStatus={loaderStatus}
-      />
-    ) : (
-      <Radar users={users} censored={censored} online_status="ONLINE" />
-    );
+    switch (view) {
+      case 'GRID':
+        return (
+          <Grid
+            users={users}
+            censored={censored}
+            onScrollEnd={loadMoreUsers}
+            loaderStatus={loaderStatus}
+          />
+        );
+      case 'RADAR':
+        return (
+          <Radar users={users} censored={censored} online_status="ONLINE" />
+        );
+      case 'DETAILS':
+        return <Details users={users} target={8115558010585088} />;
+    }
   };
 
   return (
