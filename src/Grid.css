@@ -40,15 +40,10 @@
   display: block;
 }
 
-.Grid .footer {
-  width: var(--user-card-width);
-  height: var(--user-card-width);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.Grid .footer svg {
+.Grid > .footer > svg {
   width: 70%;
   height: 70%;
+
+  left: calc(50% - 35%);
+  top: calc(50% - 35%);
 }
