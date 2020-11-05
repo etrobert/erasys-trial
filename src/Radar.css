@@ -7,6 +7,8 @@
 
 .RadarCircle > * {
   position: absolute;
+  width: var(--user-card-width);
+  height: var(--user-card-width);
   animation: RadarCircle-spin var(--radar-turn-duration) infinite linear;
 }
 
