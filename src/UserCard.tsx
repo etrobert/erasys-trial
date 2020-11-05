@@ -5,6 +5,9 @@ import ProfilePhoto from './ProfilePhoto';
 import { statusColor } from './misc';
 import './UserCard.css';
 
+const formatDist = (dist: number) =>
+  dist >= 1000 ? Math.floor(dist / 1000) + 'km' : dist + 'm';
+
 function UserCard(props: {
   user: User;
   censored: boolean;
@@ -26,7 +29,9 @@ function UserCard(props: {
             ></div>
             <span className="name">{props.user.name}</span>
           </div>
-          <span className="distance">{props.user.location.distance}m</span>
+          <span className="distance">
+            {formatDist(props.user.location.distance)}
+          </span>
         </div>
         <div className="additional-info">
           <span className="age">{props.user.personal.age}yo</span>
