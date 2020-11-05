@@ -34,7 +34,7 @@ body,
 
 .App .error {
   position: absolute;
-  z-index: 1;
+  z-index: 10;
   background-color: var(--color-dark);
   padding: 1em 2em;
   border-radius: 2em;
@@ -45,5 +45,5 @@ body,
   position: absolute;
   bottom: 1em;
   left: 1em;
-  z-index: 1;
+  z-index: 10;
 }

@@ -84,6 +84,7 @@
   --radar-radius: var(--radar-center-space);
   --radar-turn-duration: 90s;
   /* --radar-turn-duration: --radar-speed-constant * --radar-radius */
+  z-index: 2;
 }
 
 .Radar .RadarCircle:nth-child(2) {
@@ -93,6 +94,7 @@
   );
   --radar-turn-duration: 250s;
   /* --radar-turn-duration: --radar-speed-constant * --radar-radius */
+  z-index: 1;
 }
 
 .Radar .RadarCircle:nth-child(2) > * {
