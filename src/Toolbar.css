@@ -1,0 +1,31 @@
+.Toolbar {
+  display: flex;
+  flex-direction: column;
+
+  row-gap: 0.5rem;
+  padding: 0.7rem;
+}
+
+.Toolbar button {
+  font-family: futura-pt, sans-serif;
+  color: inherit;
+
+  background: none;
+  border: 2px solid var(--color-blue);
+  border-radius: 1em;
+  padding: 0.25em 1em;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+}
+
+.Toolbar button:hover,
+.Toolbar button.selected {
+  background: var(--color-blue);
+}
+
+.Toolbar section {
+  display: flex;
+  gap: 0.5rem;
+}

@@ -28,6 +28,7 @@ body,
   --user-card-width: 10rem;
   --user-card-diag: 14.14213562373rem; /* = sqrt(2 * --user-card-width^2) */
   --color-dark: #181818;
+  --color-blue: #00a3e4;
 }
 
 .App .error {
@@ -39,14 +40,9 @@ body,
   font-size: 1.5rem;
 }
 
-#censoredButton {
+.Toolbar {
   position: absolute;
   bottom: 1em;
   left: 1em;
-}
-
-#changeViewButton {
-  position: absolute;
-  top: 1em;
-  left: 1em;
+  z-index: 1;
 }

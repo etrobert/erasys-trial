@@ -2,14 +2,10 @@ import React, { useState } from 'react';
 import { hot } from 'react-hot-loader';
 import './App.css';
 import Grid from './Grid';
+import { View } from './misc';
 import Radar from './Radar';
+import Toolbar from './Toolbar';
 import useUsersLoader from './useUsersLoader';
-
-type View = 'GRID' | 'RADAR';
-enum ChangeViewButtonText {
-  'GRID' = 'Radar',
-  'RADAR' = 'Grid',
-}
 
 function App() {
   const [censored, setCensored] = useState(true);
@@ -33,15 +29,12 @@ function App() {
 
   return (
     <div className="App">
-      <button id="censoredButton" onClick={() => setCensored(!censored)}>
-        {censored ? 'Uncensored Mode' : 'Censored Mode'}
-      </button>
-      <button
-        id="changeViewButton"
-        onClick={() => setView((view) => (view == 'GRID' ? 'RADAR' : 'GRID'))}
-      >
-        {ChangeViewButtonText[view]}
-      </button>
+      <Toolbar
+        censored={censored}
+        setCensored={setCensored}
+        currentView={view}
+        setView={setView}
+      />
       {loaderStatus == 'ERROR' && (
         <div className="error">
           There has been an error. Try reloading the page.

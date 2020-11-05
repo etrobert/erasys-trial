@@ -4,4 +4,6 @@ enum statusColor {
   DATE = '#f91e79',
 }
 
-export { statusColor };
+type View = 'GRID' | 'RADAR';
+
+export { statusColor, View };
