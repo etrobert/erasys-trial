@@ -13,6 +13,8 @@ function App() {
 
   const { users, loadMoreUsers, status: loaderStatus } = useUsersLoader();
 
+  const [focus, setFocus] = useState<number | null>(null);
+
   const renderView = () => {
     if (!users) return 'Loading...';
     return view == 'GRID' ? (
@@ -21,9 +23,17 @@ function App() {
         censored={censored}
         onScrollEnd={loadMoreUsers}
         loaderStatus={loaderStatus}
+        focus={focus}
+        setFocus={setFocus}
       />
     ) : (
-      <Radar users={users} censored={censored} online_status="ONLINE" />
+      <Radar
+        users={users}
+        censored={censored}
+        online_status="ONLINE"
+        focus={focus}
+        setFocus={setFocus}
+      />
     );
   };
 

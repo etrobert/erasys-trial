@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { hot } from 'react-hot-loader';
 import { User } from './api';
 import UserCard from './UserCard';
@@ -11,16 +11,18 @@ function Grid({
   users,
   censored,
   onScrollEnd,
+  focus,
+  setFocus,
   loaderStatus,
 }: {
   users: User[];
   censored: boolean;
   onScrollEnd: () => void;
+  focus: number | null;
+  setFocus: (id: number) => void;
   loaderStatus: LoaderStatus;
 }) {
   const footerRef = useRef<HTMLLIElement>(null);
-
-  const [focus, setFocus] = useState<number | null>(null);
 
   useEffect(() => {
     if (loaderStatus != 'IDLE') return;

@@ -16,6 +16,8 @@ function RadarCircle(props: {
   users: User[];
   distanceMax: number;
   censored: boolean;
+  focus: number | null;
+  setFocus: (id: number) => void;
 }) {
   return (
     <div
@@ -25,7 +27,13 @@ function RadarCircle(props: {
       }}
     >
       {props.users.map((user) => (
-        <UserCard key={user.id} user={user} censored={props.censored} />
+        <UserCard
+          key={user.id}
+          user={user}
+          censored={props.censored}
+          focused={props.focus == user.id}
+          onClick={() => props.setFocus(user.id)}
+        />
       ))}
     </div>
   );
@@ -35,6 +43,8 @@ function Radar(props: {
   users: User[];
   censored: boolean;
   online_status: OnlineStatus;
+  focus: number | null;
+  setFocus: (id: number) => void;
 }) {
   return (
     <div className="Radar">
@@ -42,6 +52,8 @@ function Radar(props: {
         users={[props.users[0], props.users[1], props.users[2]]}
         distanceMax={12}
         censored={props.censored}
+        focus={props.focus}
+        setFocus={props.setFocus}
       />
       <RadarCircle
         users={[
@@ -56,6 +68,8 @@ function Radar(props: {
         ]}
         distanceMax={12}
         censored={props.censored}
+        focus={props.focus}
+        setFocus={props.setFocus}
       />
       <RadarCircle
         users={[
@@ -71,6 +85,8 @@ function Radar(props: {
         ]}
         distanceMax={20}
         censored={props.censored}
+        focus={props.focus}
+        setFocus={props.setFocus}
       />
       <div
         className="Radar-status"
