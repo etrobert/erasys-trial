@@ -62,10 +62,18 @@
   transform: translateY(calc(-1 * var(--slide-amount)));
 }
 
+.UserCard.focused .header,
+.UserCard:hover .header {
+  text-shadow: none;
+}
+
 .UserCard .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  text-shadow: 1px 1px 1px black;
+  transition: text-shadow var(--transition-duration);
 }
 
 .UserCard .status-name {
