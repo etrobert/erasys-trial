@@ -7,19 +7,10 @@
   width: var(--user-card-width);
   height: var(--user-card-width);
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   background-color: var(--color-dark);
 
   overflow: hidden;
   --transition-duration: 0.2s;
-}
-
-.UserCard svg {
-  width: 70%;
-  height: 70%;
 }
 
 .UserCard .name {

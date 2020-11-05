@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { hot } from 'react-hot-loader';
 import './ProfilePhoto.css';
-import { loading as loadingSvg } from './svg';
+import { loading as loadingSvg, user as userSvg } from './svg';
 
 function ProfilePhoto({
-  src,
-  alt,
+  picture,
   censored,
 }: {
-  src: string;
-  alt: string;
+  picture?: { url: string; comment: string };
   censored: boolean;
 }) {
   const [loaded, setLoaded] = useState(false);
@@ -18,13 +16,19 @@ function ProfilePhoto({
 
   return (
     <div className="ProfilePhoto">
-      {!loaded && loadingSvg}
-      <img
-        src={censored ? './cat-yawning.jpg' : src}
-        alt={alt}
-        style={{ visibility: loaded ? 'visible' : 'hidden' }}
-        onLoad={() => setLoaded(true)}
-      />
+      {picture ? (
+        <>
+          {!loaded && loadingSvg}
+          <img
+            src={censored ? './cat-yawning.jpg' : picture.url}
+            alt={picture.comment}
+            style={{ visibility: loaded ? 'visible' : 'hidden' }}
+            onLoad={() => setLoaded(true)}
+          />
+        </>
+      ) : (
+        userSvg
+      )}
     </div>
   );
 }

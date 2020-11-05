@@ -3,21 +3,12 @@ import { hot } from 'react-hot-loader';
 import { User } from './api';
 import ProfilePhoto from './ProfilePhoto';
 import { statusColor } from './misc';
-import { user as userSvg } from './svg';
 import './UserCard.css';
 
 function UserCard(props: { user: User; censored: boolean }) {
   return (
     <div className="UserCard">
-      {props.user.picture ? (
-        <ProfilePhoto
-          src={props.user.picture.url}
-          alt={props.user.picture.comment}
-          censored={props.censored}
-        />
-      ) : (
-        userSvg
-      )}
+      <ProfilePhoto picture={props.user.picture} censored={props.censored} />
       <div className="slider">
         <div className="header">
           <div className="status-name">
