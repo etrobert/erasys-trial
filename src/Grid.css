@@ -24,5 +24,12 @@
 .Grid .footer {
   width: var(--user-card-width);
   height: var(--user-card-width);
-  background-color: indianred;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Grid .footer svg {
+  width: 70%;
+  height: 70%;
 }

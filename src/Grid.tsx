@@ -5,6 +5,8 @@ import UserCard from './UserCard';
 import './Grid.css';
 import { Status as LoaderStatus } from './useUsersLoader';
 
+import { loading as loadingSvg } from './svg';
+
 function Grid({
   users,
   censored,
@@ -37,7 +39,9 @@ function Grid({
         </li>
       ))}
       {loaderStatus != 'NO_MORE' && (
-        <li ref={footerRef} className="footer"></li>
+        <li ref={footerRef} className="footer">
+          {loadingSvg}
+        </li>
       )}
     </ol>
   );
