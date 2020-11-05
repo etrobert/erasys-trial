@@ -1,6 +1,6 @@
 .Grid {
   --grid-gap: 1rem;
-  --grid-max-columns: 5;
+  --grid-max-columns: 4;
 
   --grid-max-width: calc(
     (var(--user-card-width) * var(--grid-max-columns)) +

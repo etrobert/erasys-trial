@@ -14,6 +14,7 @@
   background-color: var(--color-dark);
 
   overflow: hidden;
+  --transition-duration: 0.2s;
 }
 
 .UserCard svg {
@@ -22,24 +23,75 @@
 }
 
 .UserCard .name {
-  position: absolute;
-  bottom: 0.35rem;
-  left: 2rem;
-
-  right: 0;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 .UserCard .status {
-  --diameter: 0.7rem;
-
-  position: absolute;
-  bottom: var(--diameter);
-  left: var(--diameter);
+  --diameter: 0.7em;
 
   width: var(--diameter);
   height: var(--diameter);
   border-radius: calc(var(--diameter) / 2);
+}
+
+.ProfilePhoto {
+  transition: opacity var(--transition-duration);
+}
+
+.UserCard:hover .ProfilePhoto {
+  opacity: 0.5;
+}
+
+.UserCard .slider {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+
+  --slide-amount: calc(100% - 2.4rem);
+  position: absolute;
+  top: var(--slide-amount);
+  left: 0;
+
+  --slider-padding: 0.7em;
+  width: calc(100% - var(--slider-padding) * 2);
+  height: calc(100% - var(--slider-padding) * 2);
+
+  transition: transform var(--transition-duration);
+
+  padding: var(--slider-padding);
+
+  --small-font-size: 0.9em;
+}
+
+.UserCard:hover .slider {
+  transform: translateY(calc(-1 * var(--slide-amount)));
+}
+
+.UserCard .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.UserCard .status-name {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4em;
+  font-size: 1.2em;
+}
+
+.UserCard .distance {
+  font-size: var(--small-font-size);
+}
+
+.UserCard .additional-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--small-font-size);
+}
+
+.UserCard .location {
+  justify-self: end;
 }
