@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { hot } from 'react-hot-loader';
 import './App.css';
 import Details from './Details';
+import ExpandedUserCard from './ExpandedUserCard';
 import Grid from './Grid';
 import { View } from './misc';
 import Radar from './Radar';
@@ -31,7 +32,13 @@ function App() {
           <Radar users={users} censored={censored} online_status="ONLINE" />
         );
       case 'DETAILS':
-        return <Details users={users} target={8115558010585088} />;
+        return (
+          <Details
+            users={users}
+            target={8115558010585088}
+            censored={censored}
+          />
+        );
     }
   };
 

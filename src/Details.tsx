@@ -2,8 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import { hot } from 'react-hot-loader';
 import { User } from './api';
 import './Details.css';
+import ExpandedUserCard from './ExpandedUserCard';
 
-function Details(props: { users: User[]; target?: number }) {
+function Details(props: { users: User[]; target?: number; censored: boolean }) {
   const targetRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
@@ -14,17 +15,9 @@ function Details(props: { users: User[]; target?: number }) {
 
   return (
     <div className="Details">
-      {props.users.map((user) =>
-        user.picture ? (
-          <img
-            key={user.id}
-            ref={user.id == props.target ? targetRef : null}
-            src={user.picture.url}
-          />
-        ) : (
-          ''
-        )
-      )}
+      {props.users.map((user) => (
+        <ExpandedUserCard key={user.id} user={user} censored={props.censored} />
+      ))}
     </div>
   );
 }

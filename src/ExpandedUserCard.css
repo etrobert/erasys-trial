@@ -1,0 +1,42 @@
+.ExpandedUserCard {
+  position: relative;
+  display: flex;
+
+  border-radius: 0.3rem;
+  overflow: hidden;
+  --expanded-card-scale: 3;
+  width: calc(18rem * var(--expanded-card-scale));
+  background-color: var(--color-dark);
+}
+
+.ExpandedUserCard .ProfilePhoto {
+  flex-shrink: 0;
+  width: calc(11rem * var(--expanded-card-scale));
+  height: calc(11rem * var(--expanded-card-scale));
+}
+
+.ExpandedUserCard .details {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.ExpandedUserCard .name {
+  position: absolute;
+  bottom: 0.9rem;
+  left: 4.4rem;
+
+  font-size: 2rem;
+}
+
+.ExpandedUserCard .status {
+  --diameter: 1.6rem;
+
+  position: absolute;
+  bottom: var(--diameter);
+  left: var(--diameter);
+
+  width: var(--diameter);
+  height: var(--diameter);
+  border-radius: calc(var(--diameter));
+}
