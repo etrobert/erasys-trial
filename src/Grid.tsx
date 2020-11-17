@@ -35,18 +35,59 @@ function Grid({
     return () => observer.unobserve(footer);
   }, [onScrollEnd, loaderStatus]);
 
+  const renderSingleUser = (user: User) => (
+    <UserCard
+      user={user}
+      censored={censored}
+      onClick={() => setFocus(user.id)}
+      focused={user.id == focus}
+    />
+  );
+
+  const renderUserGroup = (users: User[]) => {
+    return (
+      <ol className="Grid__group">
+        {users.map((user) => (
+          <li key={user.id}>{renderSingleUser(user)}</li>
+        ))}
+      </ol>
+    );
+  };
+
+  const groupId = (users: User[]) => users.map((user) => user.id).join();
+
+  /**
+   * Creates a list of html *li* elements.
+   *
+   * Each element contains either a single premium user, or 4 regular users.
+   */
+  const renderUsers = () => {
+    const squares: JSX.Element[] = [];
+    let currentGroup: User[] = [];
+
+    const pushCurrentGroup = () =>
+      squares.push(
+        <li key={groupId(currentGroup)}>{renderUserGroup(currentGroup)}</li>
+      );
+
+    users.forEach((user) => {
+      if (user.is_plus)
+        squares.push(<li key={user.id}>{renderSingleUser(user)}</li>);
+      else {
+        currentGroup.push(user);
+        if (currentGroup.length == 4) {
+          pushCurrentGroup();
+          currentGroup = [];
+        }
+      }
+    });
+    if (currentGroup.length > 0) pushCurrentGroup();
+    return squares;
+  };
+
   return (
     <ol className="Grid">
-      {users.map((user) => (
-        <li key={user.id}>
-          <UserCard
-            user={user}
-            censored={censored}
-            onClick={() => setFocus(user.id)}
-            focused={user.id == focus}
-          />
-        </li>
-      ))}
+      {renderUsers()}
       {loaderStatus != 'NO_MORE' && (
         <li ref={footerRef} className="footer">
           {loadingSvg}

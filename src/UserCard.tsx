@@ -27,7 +27,9 @@ function UserCard(props: {
               className="status"
               style={{ background: statusColor[props.user.online_status] }}
             ></div>
-            <span className="name">{props.user.name}</span>
+            <span className="name" title={props.user.name}>
+              {props.user.name}
+            </span>
           </div>
           <span className="distance">
             {formatDist(props.user.location.distance)}
