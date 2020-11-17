@@ -26,8 +26,8 @@ body,
   font-family: 'Helvetica Neue', Helvetica, Arial, 'Open Sans', sans-serif;
   color: #fafafa;
 
-  --user-card-width: 20rem;
-  --user-card-diag: 28.284271247461902rem; /* = sqrt(2 * --user-card-width^2) */
+  --user-card-width: 21rem;
+  --user-card-diag: 29.698484809834994; /* = sqrt(2 * --user-card-width^2) */
   --color-dark: #181818;
   --color-blue: #00a3e4;
 }

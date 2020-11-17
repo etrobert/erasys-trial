@@ -41,7 +41,7 @@
   flex-direction: column;
   gap: 0.4em;
 
-  --slide-amount: calc(100% - 2.4rem);
+  --slide-amount: calc(100% - 2.4em);
   position: absolute;
   top: var(--slide-amount);
   left: 0;
@@ -53,8 +53,7 @@
   transition: transform var(--transition-duration);
 
   padding: var(--slider-padding);
-
-  --small-font-size: 0.9em;
+  --small-font-size: min(1.1em, 1.4rem);
 }
 
 .UserCard.focused .slider,
@@ -92,9 +91,13 @@
 .UserCard .additional-info {
   display: flex;
   justify-content: space-between;
-  font-size: var(--small-font-size);
 }
 
 .UserCard .location {
   justify-self: end;
+}
+
+.UserCard .additional-info,
+.UserCard .headline {
+  font-size: var(--small-font-size);
 }
