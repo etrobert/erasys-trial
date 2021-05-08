@@ -30,9 +30,7 @@ function useUsersLoader(): {
       if (status != 'NEW_CONTENT_REQUESTED') return;
       setStatus('LOADING');
 
-      const searchUrl =
-        'http://localhost:3000/api/search' +
-        (cursor ? '?cursor=' + cursor : '');
+      const searchUrl = '/api/search' + (cursor ? '?cursor=' + cursor : '');
       const searchResponse = await fetch(searchUrl);
       if (!searchResponse.ok) throw new Error('Error using the search api');
       const {
@@ -41,7 +39,7 @@ function useUsersLoader(): {
       } = (await searchResponse.json()) as SearchResult;
 
       const profilesUrl =
-        'http://localhost:3000/api/profiles?' +
+        '/api/profiles?' +
         searchUsers.map((user) => 'ids=' + user.id).join('&');
 
       const profileResponse = await fetch(profilesUrl);

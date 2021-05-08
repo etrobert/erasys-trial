@@ -30,6 +30,9 @@ module.exports = {
     port: 3001,
     publicPath: 'http://localhost:3001/dist',
     hotOnly: true,
+    proxy: {
+      '/api': 'http://localhost:3000'
+    }
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
 };
